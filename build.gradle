@@ -1,0 +1,69 @@
+buildscript {
+    ext {
+        springBootVersion = '2.1.2.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.mapr.demo'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'http://repository.mapr.com/maven'
+    }
+    maven {
+        url 'https://jitpack.io'
+    }
+}
+
+bootJar {
+    exclude '**/*.pom'
+}
+
+test {
+    exclude '**/*Integration*'
+    exclude '**/*Functional*'
+    exclude '**/*Context*'
+}
+
+dependencies {
+    implementation("com.mapr.ojai:mapr-ojai-driver:6.1.0-mapr") {
+        exclude group: 'org.apache.zookeeper', module: 'zookeeper'
+        exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+        exclude group: 'org.slf4j', module: 'log4j-over-slf4j'
+    }
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation "javax.validation:validation-api:2.0.1.Final"
+    implementation "com.github.mapr-demos:spring-data-maprdb:1.0.0.M2"
+    implementation "org.projectlombok:lombok:1.18.4"
+    implementation("org.apache.kafka:kafka-clients:1.1.1-mapr") {
+        exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+        exclude group: 'org.slf4j', module: 'log4j-over-slf4j'
+    }
+    implementation("io.projectreactor.kafka:reactor-kafka:1.1.0.RELEASE") {
+        exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+        exclude group: 'org.slf4j', module: 'log4j-over-slf4j'
+        exclude group: 'org.apache.kafka', module: 'kafka-clients'
+    }
+    implementation "xerces:xercesImpl:2.11.0"
+    implementation "org.webjars:webjars-locator-core"
+    implementation "org.webjars:bootstrap:3.3.7"
+    implementation "org.webjars:jquery:3.1.0"
+    implementation "org.webjars.bower:bootpag:1.0.7"
+    implementation "org.webjars:Eonasdan-bootstrap-datetimepicker:4.17.47"
+    implementation "org.webjars:momentjs:2.22.2"
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
+    testImplementation "org.mockito:mockito-core:2.24.5"
+}

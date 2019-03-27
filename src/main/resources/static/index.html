@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Files Access Info</title>
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/webjars/Eonasdan-bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/webjars/bootpag/lib/jquery.bootpag.min.js"></script>
+    <script src="/webjars/momentjs/2.22.2/min/moment.min.js"></script>
+    <script src="/webjars/Eonasdan-bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="/js/main.js"></script>
+</head>
+<body>
+<div class="container">
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Files Access Info</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <!--<li class="active"><a href="/">Profiles</a></li>-->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid text-center">
+        <div class="row content">
+            <div class="col-md-12 text-left">
+                <form class="col-md-2">
+                    <div class="form-group">
+                        <label for="searchFid">FID</label>
+                        <input type="text" class="form-control" id="searchFid" placeholder="Enter FID">
+                    </div>
+                </form>
+                <form class="col-md-2">
+                    <div class="form-group">
+                        <label for="searchName">Name</label>
+                        <input type="text" class="form-control" id="searchName" placeholder="Enter Name">
+                    </div>
+                </form>
+                <form class="col-md-2">
+                    <div class="form-group">
+                        <label for="searchPath">Path</label>
+                        <input type="text" class="form-control" id="searchPath" placeholder="Enter Path">
+                    </div>
+                </form>
+                <form class="col-md-2">
+                    <div class="form-group">
+                        <label for="datetimepickerAccessDate">Access before</label>
+                        <div class='input-group date' id='datetimepickerAccessDate'>
+                            <input type='text' class="form-control" id='searchAccessDate'/>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+                <form class="col-md-2">
+                    <div class="form-group">
+                        <label for="datetimepickerUpdateDate">Update before</label>
+                        <div class='input-group date' id='datetimepickerUpdateDate'>
+                            <input type='text' class="form-control" id='searchUpdateDate'/>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+                <div class="form-group col-md-1">
+                    <label for="page-size">Page size</label>
+                    <select class="form-control" id="page-size">
+                        <option>5</option>
+                        <option>10</option>
+                        <option>20</option>
+                        <option>50</option>
+                        <option>100</option>
+                    </select>
+                </div>
+                <form class="col-md-1" >
+                    <button id="clear" class="btn btn-sm btn-secondary" type="reset"><span class="glyphicon glyphicon-remove"></span></button>
+                    <br><br>
+                    <button id="search" class="btn btn-sm btn-secondary" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                </form>
+                <br>
+
+                <table id="content-table" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="col-md-2">FID</th>
+                            <th class="col-md-2">Name</th>
+                            <th class="col-md-4">Path</th>
+                            <th class="col-md-2">Last access</th>
+                            <th class="col-md-2">Last update</th>
+                        </tr>
+                    </thead>
+                    <tbody id="content">
+                    </tbody>
+                </table>
+                <center id="pagination"></center>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
